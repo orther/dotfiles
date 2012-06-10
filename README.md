@@ -5,6 +5,12 @@ My OSX config files
 
 ## Usage
 
+1. Install these known prerequisites
+
+  ```
+  brew install reattach-to-user-namespace
+  ```
+
 1. Clone this repo and init submodules
 
   ```
@@ -17,8 +23,8 @@ My OSX config files
   ```
   ln -s `pwd`/tmux/.tmux.conf ~/.tmux.conf
   ln -s `pwd`/tmux/.tmux.clipboard ~/.tmux.clipboard
-  ln -s `pwd`/battery ~/battery
-  ln -s `pwd`/tmux-panes ~/tmux-panes
+  ln -s `pwd`/tmux/battery ~/battery
+  ln -s `pwd`/tmux/tmux-panes ~/tmux-panes
   ```
 
 1. Get Drunk!!!
