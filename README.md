@@ -1,4 +1,4 @@
-dotfiles
+dotfiles - No Private!
 ========
 
 My OSX config files
