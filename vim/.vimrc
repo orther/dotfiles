@@ -12,6 +12,9 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 
+" Fixes SuperTab highlight color with base16-default color scheme
+highlight Pmenu ctermbg=238 gui=bold
+
 "-------------------------------------------------------------------------------
 " Vundle Setup & Load
 "-------------------------------------------------------------------------------
@@ -130,12 +133,12 @@ if executable('coffeetags')
         \ }
 endif
 
+" SuperTab
+"highlight Pmenu ctermbg=238 gui=bold
+
 "-------------------------------------------------------------------------------
 " Custom FileType Settings
 "-------------------------------------------------------------------------------
-
-" CoffeeScript
-"au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 " HTML, HTMLDJANGO, LESS
 au FileType coffee,html,htmldjango,less
