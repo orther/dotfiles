@@ -8,7 +8,9 @@ My OSX config files
 1. Install these known prerequisites
 
   ```
-  brew install macvim
+  brew install brew-gem
+  brew gem CoffeeTags
+  brew install macvim ctags
   brew install tmux reattach-to-user-namespace
   ```
 

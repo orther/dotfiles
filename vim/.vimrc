@@ -1,9 +1,16 @@
 "-------------------------------------------------------------------------------
-" Vim
+" Vim Initial Setup
 "-------------------------------------------------------------------------------
 
-set nocompatible " be iMproved
-filetype off     " required!
+set nocompatible
+filetype off
+
+" Whitespace stuff
+set nowrap
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
 
 "-------------------------------------------------------------------------------
 " Vundle Setup & Load
@@ -19,18 +26,29 @@ Bundle 'gmarik/vundle'
 " Bundles
 "-------------------------------------------------------------------------------
 
-" color schemes
+" color scheme
+Bundle 'godlygeek/csapprox' 
 Bundle 'chriskempson/base16-vim'
 
-" navigation/movement
+" git
+Bundle 'tpope/vim-fugitive'
+
+" file navigation
+Bundle 'majutsushi/tagbar'
+
+" movement
 Bundle 'Lokaltog/vim-easymotion'
+
+" language support
+Bundle 'kchmck/vim-coffee-script'
 
 " tab/auto complete
 Bundle 'ervandew/supertab'
+
+" visualization/notification
+Bundle 'Lokaltog/vim-powerline'
+
 " original repos on github
-"Bundle 'tpope/vim-fugitive'
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-"Bundle 'tpope/vim-rails.git'
 " vim-scripts repos
 "Bundle 'L9'
 "Bundle 'FuzzyFinder'
@@ -45,7 +63,7 @@ filetype plugin indent on     " required!
 "-------------------------------------------------------------------------------
 
 set background=dark
-colorscheme base16-tomorrow
+colorscheme base16-default
 syntax on
 
 "-------------------------------------------------------------------------------
@@ -68,9 +86,57 @@ nnoremap <Down> <C-w>j
 vmap < <gv
 vmap > >gv
 
+" highlight trailing spaces
+set list listchars=tab:\ \ ,trail:·
+
+" split-it mapping
+nmap <leader>-  :new<CR>
+nmap <leader>[  :vnew<CR>
+nmap <leader>]  :rightbelow vnew<CR>
+nmap <leader>_  :rightbelow new<CR>
+
 "-------------------------------------------------------------------------------
 " Bundle Configs
 "-------------------------------------------------------------------------------
 
+" CoffeeScript
+let coffee_compile_vert = 1
+
 " EasyMotion
 let g:EasyMotion_leader_key = '<Leader>' 
+
+" Powerline
+let g:Powerline_symbols = 'fancy'
+set laststatus=2   " Always show the statusline
+set encoding=utf-8 " Necessary to show Unicode glyphs
+
+" Tagbar (ctags)
+filetype on
+nnoremap <leader>l :TagbarToggle<CR>
+
+if executable('coffeetags')
+  let g:tagbar_type_coffee = {
+        \ 'ctagsbin' : 'coffeetags',
+        \ 'ctagsargs' : '',
+        \ 'kinds' : [
+        \ 'f:functions',
+        \ 'o:object',
+        \ ],
+        \ 'sro' : ".",
+        \ 'kind2scope' : {
+        \ 'f' : 'object',
+        \ 'o' : 'object',
+        \ }
+        \ }
+endif
+
+"-------------------------------------------------------------------------------
+" Custom FileType Settings
+"-------------------------------------------------------------------------------
+
+" CoffeeScript
+"au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+
+" HTML, HTMLDJANGO, LESS
+au FileType coffee,html,htmldjango,less
+    \ set shiftwidth=2 softtabstop=2 tabstop=2 textwidth=239
