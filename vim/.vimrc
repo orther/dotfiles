@@ -15,6 +15,10 @@ set expandtab
 " Fixes SuperTab highlight color with base16-default color scheme
 highlight Pmenu ctermbg=238 gui=bold
 
+" store swap/backup files in one folder
+set backupdir=~/.vim/.backup,/tmp
+set directory=~/.vim/.backup,/tmp
+
 "-------------------------------------------------------------------------------
 " Vundle Setup & Load
 "-------------------------------------------------------------------------------
@@ -36,8 +40,10 @@ Bundle 'chriskempson/base16-vim'
 " git
 Bundle 'tpope/vim-fugitive'
 
-" file navigation
+" file/buffer navigation
 Bundle 'majutsushi/tagbar'
+Bundle 'kien/ctrlp.vim'
+"Bundle 'LustyJuggler'
 
 " movement
 Bundle 'Lokaltog/vim-easymotion'
@@ -105,8 +111,14 @@ nmap <leader>_  :rightbelow new<CR>
 " CoffeeScript
 let coffee_compile_vert = 1
 
+" CtrlP
+nnoremap <c-b> :CtrlPBuffer<CR>
+
 " EasyMotion
 let g:EasyMotion_leader_key = '<Leader>' 
+
+" Lusty
+set hidden
 
 " Powerline
 let g:Powerline_symbols = 'fancy'
@@ -115,7 +127,7 @@ set encoding=utf-8 " Necessary to show Unicode glyphs
 
 " Tagbar (ctags)
 filetype on
-nnoremap <leader>l :TagbarToggle<CR>
+nnoremap <leader>lt :TagbarToggle<CR>
 
 if executable('coffeetags')
   let g:tagbar_type_coffee = {
@@ -132,9 +144,6 @@ if executable('coffeetags')
         \ }
         \ }
 endif
-
-" SuperTab
-"highlight Pmenu ctermbg=238 gui=bold
 
 "-------------------------------------------------------------------------------
 " Custom FileType Settings
