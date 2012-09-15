@@ -50,20 +50,14 @@ Bundle 'Lokaltog/vim-easymotion'
 
 " language support
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'wavded/vim-stylus'
 
 " tab/auto complete
 Bundle 'ervandew/supertab'
 
 " visualization/notification
 Bundle 'Lokaltog/vim-powerline'
-
-" original repos on github
-" vim-scripts repos
-"Bundle 'L9'
-"Bundle 'FuzzyFinder'
-" non github repos
-"Bundle 'git://git.wincent.com/command-t.git'
-" ...
 
 filetype plugin indent on     " required!
 
