@@ -51,6 +51,7 @@ Bundle 'Lokaltog/vim-easymotion'
 " language support
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'digitaltoad/vim-jade'
+Bundle 'rodjek/vim-puppet'
 Bundle 'wavded/vim-stylus'
 
 " tab/auto complete
