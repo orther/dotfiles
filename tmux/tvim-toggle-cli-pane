@@ -4,32 +4,39 @@
 # CONFIG
 #-------------------------------------------------------------------------------
 
-cfg_cli_open_size=20 # number of lines
+# cli pane size (in number of lines)
+cfg_cli_open_size=20
+cfg_cli_open_big_size=40
 
 #-------------------------------------------------------------------------------
 # THAT HOT SHIT CODE BELOW
 #-------------------------------------------------------------------------------
 
+# defaults
+_cli_open_size=$cfg_cli_open_size
 tmux_border_size=3
-num_panes=$(tmux list-panes | wc -l)
+
+# parse options
+while getopts ":b" opt; do
+  case $opt in
+    b)
+      # set cli open size big
+      _cli_open_size=$cfg_cli_open_big_size
+      ;;
+  esac
+done
 
 # open cli pane if necessary
+num_panes=$(tmux list-panes | wc -l)
 if [ $num_panes -eq 1 ]; then
   # no other panes exist so we create one (for the cli)
-  ~/tmux-panes -v
-
-  # fill new cli pane with blank prompts (hides ~/tmux-panes cd and clear cmds)
-#  COUNTER=0
-#  while [  $COUNTER -lt $cfg_cli_open_size ]; do
-#    tmux send-keys "clear" C-m
-#    let COUNTER=COUNTER+1 
-#  done
+  ~/tmux-split-win-cwd -v -p 1
 
   # switch back to vim pane before resizing
   tmux select-pane -U
 fi
 
-# pull current pane and window sizes
+# pull current pane info
 cur_pane=$(tmux list-panes | grep '(active)' | cut -d : -f 1)
 cur_pane_height=$(tmux list-panes | grep '(active)' | cut -d ] -f 1 | cut -d x -f 2)
 cur_win=$(tmux list-windows | grep '(active)' | cut -d : -f 1)
@@ -39,11 +46,13 @@ cur_win_height=$(tmux list-windows | grep '(active)' | cut -d ] -f 1 | cut -d [ 
 cli_height=$(($cur_win_height - $cur_pane_height - $tmux_border_size))
 
 # toggle cli open/close
-if [ $cli_height -lt $cfg_cli_open_size ]; then
+if [ $cli_height -lt $_cli_open_size ]; then
   # open cli pane
-  cli_height_diff=$(($cfg_cli_open_size - $cli_height))
+  cli_height_diff=$(($_cli_open_size - $cli_height))
+  echo "OPEN CLI ${_cli_open_size}x${cli_height}=${cli_height_diff}"
   tmux resize-pane -U ${cli_height_diff}
 else
   # close cli pane
+  echo "CLOSE CLI ${cli_height}x${_cli_open_size}"
   tmux resize-pane -D 1000
 fi
