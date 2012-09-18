@@ -1,7 +1,7 @@
-dotfiles - No Private!
+dotfiles
 ========
 
-My OSX config files
+So many wasted hours to get these just right... almost.
 
 ## Usage
 
