@@ -36,12 +36,18 @@ else
 fi
 
 if [ -z $2 ]; then
-    # default to NO arrow
+    # defaults
     arrow=0
+    label=0
 else
     if [[ $2 == "a" || $2 == "arrow" ]]; then
-        # display arrorw ONLY
+        # display arrow ONLY
         arrow=1
+        label=0
+    elif [[ $2 == "l" || $2 == "label" ]]; then
+        # display label ONLY
+        arrow=0
+        label=1
     fi
 fi
 
@@ -78,11 +84,15 @@ case $(uname -s) in
             # discharging
             0)
                 ext="No"
-                charge_direction_arrow="▼";;
+                charge_direction_arrow="⬇ "
+                charge_direction_symbol="𝖡"
+                ;;
             # charging
             1)
                 ext="Yes"
-                charge_direction_arrow="▲";;
+                charge_direction_arrow="⬆ "
+                charge_direction_symbol="𝖡"
+                ;;
         esac
 
         ioreg -c AppleSmartBattery -w0 | \
@@ -111,9 +121,16 @@ case $(uname -s) in
                     echo "⮀"
                     exit
                 fi
+                if [ $label -eq 1 ]; then
+                    #echo " в𝗕 "
+                    #echo " ${charge_direction_symbol} "
+                    #echo "${charge_direction_arrow}"
+                    echo "⮀"
+                    exit
+                fi
 
                 BAT=`echo "100 * $curcap / $maxcap" | bc`
-                echo " "${charge_direction_arrow} ${BAT}%" "
+                echo " 𝗕𝗮𝘁𝘁𝗲𝗿𝘆 "${charge_direction_arrow} ${BAT}﹪
                 exit
             fi
         done
