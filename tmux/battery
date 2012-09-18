@@ -73,7 +73,7 @@ case $(uname -s) in
                     fi
                 ;;
                 "FullyCharged")
-                    if [ "$value" = "Yes" ]; then
+                    if [ "$value" = "!Yes" ]; then
                         exit
                     fi
                 ;;
