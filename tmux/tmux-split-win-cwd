@@ -20,8 +20,8 @@
 # LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#
-#
+
+
 # NAME
 #   tmux-split-win-cwd -- tmux split-window with current working dir
 #
@@ -54,7 +54,6 @@
 #   new pane's path.
 
 
-#
 # INSTALL AND USAGE
 #
 # 1. Download this script to your how folder and give it permissions to execute:
@@ -72,22 +71,48 @@
 #   $ pwd
 #
 #
-# MY PERSONAL TMUX SPLIT WINDOW BINDINGS
+# MY PERSONAL TMUX SPLIT WIN BINDINGS
 #
-#   Add the following bindings to your ~/.tmux.conf:
+#   Bindings below are set in ~/.tmux.conf:
 #
-#      bind | send-keys " ~/tmux-panes -h" C-m
-#      bind - send-keys " ~/tmux-panes -v; tmux swap-pane -U" C-m
-#      bind _ send-keys " ~/tmux-panes -v" C-m
+#      bind \ send-keys " ~/tmux-split-win-cwd -h -i" c-m
+#      bind | send-keys " ~/tmux-split-win-cwd -h" c-m
+#      bind - send-keys " ~/tmux-split-win-cwd -v -i" c-m
+#      bind _ send-keys " ~/tmux-split-win-cwd -v" c-m
 #
-#   With the above bindings you get the following split behaviors:
+#   With the above bindings set you get the following behaviors:
 #
+#      <prefix>+\ (Create new pane to the left)
 #      <prefix>+| (Create new pane to the right)
 #      <prefix>+- (Create new pane above)
 #      <prefix>+_ (Create new pane below)
 #
-
 set -o nounset
 
-TMUX_CURRENT_DIR=`pwd`
-tmux split-window $* "cd ${TMUX_CURRENT_DIR}; ${SHELL}"
+# default values
+inverse_split=0
+
+# get source pane details
+src_pane_dir=`pwd`
+src_pane_num=$(tmux display-message -p '#P')
+
+# parse options
+while getopts ":i" opt; do
+  case $opt in
+    i)
+      # set inverse split command since -i flag passed
+      inverse_split=1
+      ;;
+  esac
+done
+
+# clean args for tmux split-window
+clean_args=${*/-i/}
+
+# create new split
+tmux split-window $clean_args "cd ${src_pane_dir}; ${SHELL}"
+
+# invert split direction if needed
+if [ $inverse_split -eq 1 ]; then
+  tmux swap-pane -s ${src_pane_num}
+fi

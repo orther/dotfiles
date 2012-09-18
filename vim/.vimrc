@@ -158,8 +158,9 @@ endif
 "-------------------------------------------------------------------------------
 " Tmux Custom Scripts/Mappings
 "-------------------------------------------------------------------------------
-" toggle tmux pane for cli
+" toggle tmux pane for cli (capital C for BIG cli pane)
 noremap <silent> <Leader>c :silent !~/tvim-toggle-cli-pane<CR>
+noremap <silent> <Leader>C :silent !~/tvim-toggle-cli-pane -b<CR>
 
 "-------------------------------------------------------------------------------
 " Custom FileType Settings
