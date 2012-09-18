@@ -29,7 +29,8 @@ My OSX config files
   ln -s `pwd`/tmux/.tmux.clipboard ~/.tmux.clipboard
   ln -s `pwd`/tmux/battery ~/battery
   ln -s `pwd`/tmux/tmux-pane-maximize ~/tmux-pane-maximize
-  ln -s `pwd`/tmux/tmux-panes ~/tmux-panes
+  ln -s `pwd`/tmux/tmux-split-win-cwd ~/tmux-split-win-cwd
+  ln -s `pwd`/tmux/tvim-toggle-cli-pane ~/tvim-toggle-cli-pane
   ln -s `pwd`/vim/.vimrc ~/.vimrc
   ln -s `pwd`/vim/.vim ~/.vim
   ```

@@ -54,9 +54,13 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'rodjek/vim-puppet'
 Bundle 'wavded/vim-stylus'
+Bundle 'vim-scripts/bash-support.vim'
 
 " tab/auto complete
 Bundle 'ervandew/supertab'
+
+" tmux
+Bundle 'benmills/vimux'
 
 " visualization/notification
 Bundle 'Lokaltog/vim-powerline'
@@ -140,6 +144,22 @@ if executable('coffeetags')
         \ }
         \ }
 endif
+
+" Vimux
+"map <Leader>vp :VimuxPromptCommand<CR>
+"map <Leader>vl :VimuxRunLastCommand<CR>
+"map <Leader>vi :VimuxInspectRunner<CR>
+"map <Leader>vq :VimuxCloseRunner<CR>
+"map <Leader>vx :VimuxClosePanes<CR>
+"map <Leader>vc :VimuxClearRunnerHistory<CR>
+"map <Leader>vs :call VimuxRunCommand("~/tvim-toggle-cli-panel", 1)<CR>
+
+
+"-------------------------------------------------------------------------------
+" Tmux Custom Scripts/Mappings
+"-------------------------------------------------------------------------------
+" toggle tmux pane for cli
+noremap <silent> <Leader>c :silent !~/tvim-toggle-cli-pane<CR>
 
 "-------------------------------------------------------------------------------
 " Custom FileType Settings
