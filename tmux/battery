@@ -21,6 +21,30 @@ freebsd_get_bat ()
 
 # TODO Identify which machine we're on from teh script.
 
+# add short args
+if [ -z $1 ]; then
+    # default to charging
+    action=1
+else
+    if [[ $1 == "c" || $1 == "Charging" ]]; then
+        # charging
+        action=1
+    elif [[ $1 == "d" || $1 == "Discharging" ]]; then
+        # discharging
+        action=0
+    fi
+fi
+
+if [ -z $2 ]; then
+    # default to NO arrow
+    arrow=0
+else
+    if [[ $2 == "a" || $2 == "arrow" ]]; then
+        # display arrorw ONLY
+        arrow=1
+    fi
+fi
+
 case $(uname -s) in
     "Linux")
         BATPATH=/sys/class/power_supply/BAT0
@@ -50,11 +74,15 @@ case $(uname -s) in
         esac
         ;;
     "Darwin")
-        case $1 in
-            "Discharging")
-                ext="No";;
-            "Charging")
-                ext="Yes";;
+        case $action in
+            # discharging
+            0)
+                ext="No"
+                charge_direction_arrow="▼";;
+            # charging
+            1)
+                ext="Yes"
+                charge_direction_arrow="▲";;
         esac
 
         ioreg -c AppleSmartBattery -w0 | \
@@ -79,8 +107,13 @@ case $(uname -s) in
                 ;;
             esac
             if [[ -n "$maxcap" && -n $curcap ]]; then
+                if [ $arrow -eq 1 ]; then
+                    echo "⮀"
+                    exit
+                fi
+
                 BAT=`echo "100 * $curcap / $maxcap" | bc`
-                echo ${BAT}%
+                echo " "${charge_direction_arrow} ${BAT}%" "
                 exit
             fi
         done
