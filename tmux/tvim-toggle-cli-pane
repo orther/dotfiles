@@ -32,8 +32,10 @@ if [ $num_panes -eq 1 ]; then
   # no other panes exist so we create one (for the cli)
   ~/tmux-split-win-cwd -v -p 1
 
-  # switch back to vim pane before resizing
+  # switch back to vim pane before exiting
   tmux select-pane -U
+
+  exit
 fi
 
 # pull current pane info
