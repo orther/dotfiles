@@ -51,10 +51,8 @@ cli_height=$(($cur_win_height - $cur_pane_height - $tmux_border_size))
 if [ $cli_height -lt $_cli_open_size ]; then
   # open cli pane
   cli_height_diff=$(($_cli_open_size - $cli_height))
-  echo "OPEN CLI ${_cli_open_size}x${cli_height}=${cli_height_diff}"
   tmux resize-pane -U ${cli_height_diff}
 else
   # close cli pane
-  echo "CLOSE CLI ${cli_height}x${_cli_open_size}"
   tmux resize-pane -D 1000
 fi
