@@ -8,9 +8,11 @@ So many wasted hours to get these just right... almost.
 1. Install these known prerequisites
 
   ```
-  brew install brew-gem
+  brew install brew-gem mercurial
   brew gem CoffeeTags
-  brew install macvim ctags
+  brew install ctags
+  brew tap homebrew/dupes
+  brew install homebrew/dupes/vim
   brew install tmux reattach-to-user-namespace
   ```
 
