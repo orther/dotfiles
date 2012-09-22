@@ -12,7 +12,9 @@ So many wasted hours to get these just right... almost.
   brew gem CoffeeTags
   brew install ctags
   brew tap homebrew/dupes
+  brew unlink ruby
   brew install homebrew/dupes/vim
+  brew link ruby
   brew install tmux reattach-to-user-namespace
   ```
 
