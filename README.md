@@ -21,7 +21,7 @@ So many wasted hours to get these just right... almost.
 1. Clone this repo (and any other dependant repos)
 
   ```
-  git clone --recursive https://orther@github.com/orther/dotfiles.git
+  git clone --recursive https://AbleCoder@github.com/AbleCoder/dotfiles.git
   cd dotfiles
   git clone https://github.com/gmarik/vundle.git vim/.vim/bundle/vundle
   ```
