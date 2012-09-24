@@ -31,7 +31,7 @@ So many wasted hours to get these just right... almost.
 
   ```
   ln -s `pwd`/tmux/.tmux.conf ~/.tmux.conf
-  ln -s `pwd`/tmux/.tmux.clipboard ~/.tmux.clipboard
+  ln -s `pwd`/tmux/.tmux ~/.tmux
   ln -s `pwd`/tmux/battery ~/battery
   ln -s `pwd`/tmux/tmux-pane-maximize ~/tmux-pane-maximize
   ln -s `pwd`/tmux/tmux-split-win-cwd ~/tmux-split-win-cwd
