@@ -105,9 +105,6 @@ nmap <leader>_  :rightbelow new<CR>
 " allow backspace to delete end-of-line in insert mode
 set backspace=eol
 
-" Preserve indentation while pasting text from the OS X clipboard
-noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
-
 "-------------------------------------------------------------------------------
 " Bundle Configs
 "-------------------------------------------------------------------------------
@@ -216,3 +213,15 @@ noremap <silent> <Leader>C :silent !~/tvim-toggle-cli-pane -b<CR>
 " HTML, HTMLDJANGO, LESS
 au FileType coffee,html,htmldjango,less
     \ set shiftwidth=2 softtabstop=2 tabstop=2 textwidth=239
+
+"-------------------------------------------------------------------------------
+" Load OS Specific Config Files
+"-------------------------------------------------------------------------------
+
+if has('win32')
+    source ~/.vim/.vimrc.win
+elseif has('mac')
+    source ~/.vim/.vimrc.osx
+elseif has('unix')
+    source ~/.vim/.vimrc.linux
+endif

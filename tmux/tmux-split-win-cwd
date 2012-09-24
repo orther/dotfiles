@@ -30,6 +30,10 @@
 #
 #   NOTE: All options match tmux split-window except those noted below.
 #
+#   -c
+#      Fix OSX clipboard by reattaching namespace.
+#      TODO: Add more details and instruction.
+#
 #   -i
 #      Inverse default split direction. For example if you split vertically by
 #      (by passing -v) the default behavior is to create a new pane below and if
@@ -71,14 +75,14 @@
 #   $ pwd
 #
 #
-# MY PERSONAL TMUX SPLIT WIN BINDINGS
+# MY PERSONAL TMUX SPLIT WIN BINDINGS (In OSX so using the -c flag)
 #
 #   Bindings below are set in ~/.tmux.conf:
 #
-#      bind \ send-keys " ~/tmux-split-win-cwd -h -i" c-m
-#      bind | send-keys " ~/tmux-split-win-cwd -h" c-m
-#      bind - send-keys " ~/tmux-split-win-cwd -v -i" c-m
-#      bind _ send-keys " ~/tmux-split-win-cwd -v" c-m
+#      bind \ send-keys " ~/tmux-split-win-cwd -h -i -c" c-m
+#      bind | send-keys " ~/tmux-split-win-cwd -h -c" c-m
+#      bind - send-keys " ~/tmux-split-win-cwd -v -i -c" c-m
+#      bind _ send-keys " ~/tmux-split-win-cwd -v -c" c-m
 #
 #   With the above bindings set you get the following behaviors:
 #
@@ -90,6 +94,7 @@
 set -o nounset
 
 # default values
+start_shell_cmd="${SHELL}"
 inverse_split=0
 
 # get source pane details
@@ -97,8 +102,12 @@ src_pane_dir=`pwd`
 src_pane_num=$(tmux display-message -p '#P')
 
 # parse options
-while getopts ":i" opt; do
+while getopts ":ci" opt; do
   case $opt in
+    c)
+      # set fix osx clipboard on shell start
+      start_shell_cmd="reattach-to-user-namespace -l ${SHELL}"
+      ;;
     i)
       # set inverse split command since -i flag passed
       inverse_split=1
@@ -107,10 +116,10 @@ while getopts ":i" opt; do
 done
 
 # clean args for tmux split-window
-clean_args=${*/-i/}
+clean_args=${*/-[ci]/}
 
 # create new split
-tmux split-window $clean_args "cd ${src_pane_dir}; ${SHELL}"
+tmux split-window $clean_args "cd ${src_pane_dir}; ${start_shell_cmd}"
 
 # invert split direction if needed
 if [ $inverse_split -eq 1 ]; then
