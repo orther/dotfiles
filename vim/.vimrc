@@ -57,6 +57,9 @@ Bundle 'klen/python-mode'
 " tab/auto complete
 Bundle 'ervandew/supertab'
 
+" search
+Bundle 'vim-scripts/SearchComplete'
+
 " tmux
 Bundle 'benmills/vimux'
 
