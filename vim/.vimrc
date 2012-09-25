@@ -30,6 +30,9 @@ Bundle 'gmarik/vundle'
 " Bundles
 "-------------------------------------------------------------------------------
 
+" code comment
+Bundle 'tomtom/tcomment_vim'
+
 " color scheme
 Bundle 'godlygeek/csapprox' 
 Bundle 'chriskempson/base16-vim'
