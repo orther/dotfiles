@@ -131,7 +131,7 @@ nnoremap <silent> <c-l> :ClearCtrlPCache<cr>\|:CtrlP<cr>
 let g:ctrlp_show_hidden = 1
 " custom file/folder ignores
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn|ve)$',
+  \ 'dir':  '\v[\/]\.(git|hg|svn|ve|backup)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
