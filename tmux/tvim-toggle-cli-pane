@@ -4,24 +4,34 @@
 # CONFIG
 #-------------------------------------------------------------------------------
 
-# cli pane size (in number of lines)
-cfg_cli_open_size=25
-cfg_cli_open_big_size=40
+# cli pane size (in percent)
+CFG_CLI_SIZE_X=0
+CFG_CLI_SIZE_C=25
+CFG_CLI_SIZE_V=70
+CFG_CLI_SIZE_B=95
 
 #-------------------------------------------------------------------------------
 # THAT HOT SHIT CODE BELOW
 #-------------------------------------------------------------------------------
 
 # defaults
-_cli_open_size=$cfg_cli_open_size
+_cli_open_size=$CFG_CLI_SIZE_X
 tmux_border_size=3
 
 # parse options
-while getopts ":b" opt; do
+while getopts ":xcvb" opt; do
   case $opt in
+    x)
+      _cli_open_size=$CFG_CLI_SIZE_X
+      ;;
+    c)
+      _cli_open_size=$CFG_CLI_SIZE_C
+      ;;
+    v)
+      _cli_open_size=$CFG_CLI_SIZE_V
+      ;;
     b)
-      # set cli open size big
-      _cli_open_size=$cfg_cli_open_big_size
+      _cli_open_size=$CFG_CLI_SIZE_B
       ;;
   esac
 done
@@ -49,15 +59,31 @@ cur_pane_height=$(tmux list-panes | grep '(active)' | cut -d ] -f 1 | cut -d x -
 cur_win=$(tmux list-windows | grep '(active)' | cut -d : -f 1)
 cur_win_height=$(tmux list-windows | grep '(active)' | cut -d ] -f 1 | cut -d [ -f 2 | cut -d x -f 2)
 
-# get cli height (only works if only 2 horizontal panes)
-cli_height=$(($cur_win_height - $cur_pane_height - $tmux_border_size))
+# get new cli height in lines
+new_cli_height_lines=$((($_cli_open_size * $cur_win_height) / 100))
 
-# toggle cli open/close
-if [ $cli_height -lt $_cli_open_size ]; then
-  # open cli pane
-  cli_height_diff=$(($_cli_open_size - $cli_height))
-  tmux resize-pane -U ${cli_height_diff}
+# minimize cli before opening
+tmux resize-pane -D 1000
+
+# only open cli pane if height more than 0
+if [ $new_cli_height_lines -gt 0 ]; then
+    # open cli to calculated height
+    tmux resize-pane -U $new_cli_height_lines
 else
-  # close cli pane
-  tmux resize-pane -D 1000
+    echo "NOPE: $new_cli_height_lines"
 fi
+
+# old toggle open functionality
+################################
+## get cli height (only works if only 2 horizontal panes)
+#cli_height=$(($cur_win_height - $cur_pane_height - $tmux_border_size))
+#
+## toggle cli open/close
+#if [ $cli_height -lt $_cli_open_size ]; then
+#  # open cli pane
+#  cli_height_diff=$(($_cli_open_size - $cli_height))
+#  tmux resize-pane -U ${cli_height_diff}
+#else
+#  # close cli pane
+#  tmux resize-pane -D 1000
+#fi
