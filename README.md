@@ -8,7 +8,7 @@ So many wasted hours to get these just right... almost.
 1. Install/Configure these known prerequisites
 
   ```
-  brew install brew-gem mercurial
+  brew install brew-gem mercurial libevent
   brew gem CoffeeTags
   brew install ctags
   brew tap homebrew/dupes
@@ -16,7 +16,7 @@ So many wasted hours to get these just right... almost.
   brew install homebrew/dupes/vim
   brew link ruby
   git config --global core.editor /usr/local/bin/vim
-  brew install tmux reattach-to-user-namespace
+  brew install --HEAD https://raw.github.com/AbleCoder/homebrew-formulas/master/tmux.rb
   ```
 
 1. Clone this repo (and any other dependant repos)
