@@ -5,7 +5,7 @@
 #-------------------------------------------------------------------------------
 
 # cli pane size (in number of lines)
-cfg_cli_open_size=30
+cfg_cli_open_size=25
 cfg_cli_open_big_size=40
 
 #-------------------------------------------------------------------------------
@@ -34,11 +34,11 @@ if [ $num_panes -eq 1 ]; then
   # tmux 1.6 split
   #~/tmux-split-win-cwd -v -p 1
 
-  # tmux 1.7 split
-  tmux split-window -v -d
-
   # switch back to vim pane before exiting
   #tmux select-pane -U
+
+  # tmux 1.7 split
+  tmux split-window -v -d
 
   exit
 fi
