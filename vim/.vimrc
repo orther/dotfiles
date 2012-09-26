@@ -234,8 +234,8 @@ noremap <silent> <Leader>cb :silent !~/tvim-toggle-cli-pane -b<CR>
 " Custom FileType Settings
 "-------------------------------------------------------------------------------
 
-" coffeescript, html, htmldjango, jade, less
-au FileType coffee,html,htmldjango,jade,less
+" coffeescript, html, htmldjango, jade, less, stylus
+au FileType coffee,html,htmldjango,jade,less,stylus
     \ set shiftwidth=2 softtabstop=2 tabstop=2 textwidth=239
 
 "-------------------------------------------------------------------------------
