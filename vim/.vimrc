@@ -225,10 +225,10 @@ endif
 "-------------------------------------------------------------------------------
 
 " toggle tmux pane for cli \cx = closed, \cc = small, \cv = medium, \cb = large
-"noremap <silent> <Leader>cx :silent !~/tvim-toggle-cli-pane -x<CR>
-"noremap <silent> <Leader>cc :silent !~/tvim-toggle-cli-pane -c<CR>
-"noremap <silent> <Leader>cv :silent !~/tvim-toggle-cli-pane -v<CR>
-"noremap <silent> <Leader>cb :silent !~/tvim-toggle-cli-pane -b<CR>
+noremap <silent> <Leader>cx :silent !~/tvim-toggle-cli-pane -x<CR>
+noremap <silent> <Leader>cc :silent !~/tvim-toggle-cli-pane -c<CR>
+noremap <silent> <Leader>cv :silent !~/tvim-toggle-cli-pane -v<CR>
+noremap <silent> <Leader>cb :silent !~/tvim-toggle-cli-pane -b<CR>
 
 "-------------------------------------------------------------------------------
 " Custom FileType Settings

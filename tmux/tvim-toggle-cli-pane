@@ -7,6 +7,7 @@
 # cli pane location - D, L, R, or U
 CFG_CLI_LOCATION="D"
 
+# vim: set tabstop=4 shiftwidth=4: 
 # cli pane size (in percent)
 CFG_CLI_SIZE_X=0
 CFG_CLI_SIZE_C=25
