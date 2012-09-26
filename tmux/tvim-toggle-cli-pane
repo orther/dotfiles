@@ -4,6 +4,9 @@
 # CONFIG
 #-------------------------------------------------------------------------------
 
+# cli pane location - D, L, R, or U
+CFG_CLI_LOCATION="D"
+
 # cli pane size (in percent)
 CFG_CLI_SIZE_X=0
 CFG_CLI_SIZE_C=25
@@ -16,7 +19,29 @@ CFG_CLI_SIZE_B=95
 
 # defaults
 _cli_open_size=$CFG_CLI_SIZE_X
+_cli_open_direction_flag="-v"
+_cli_resize_smaller_direction_flag="-D"
+_cli_resize_bigger_direction_flag="-U"
 tmux_border_size=3
+
+# cli location flags
+case $CFG_CLI_LOCATION in
+  D)
+    _cli_open_direction_flag="-v"
+    _cli_resize_smaller_direction_flag="-D"
+    _cli_resize_bigger_direction_flag="-U"
+    ;;
+  L)
+    _cli_open_direction_flag="-h"
+    _cli_resize_smaller_direction_flag="-L"
+    _cli_resize_bigger_direction_flag="-R"
+    ;;
+  R)
+    _cli_open_direction_flag="-h"
+    _cli_resize_smaller_direction_flag="-R"
+    _cli_resize_bigger_direction_flag="-L"
+    ;;
+esac
 
 # parse options
 while getopts ":xcvb" opt; do
@@ -48,7 +73,7 @@ if [ $num_panes -eq 1 ]; then
   #tmux select-pane -U
 
   # tmux 1.7 split
-  tmux split-window -v -d
+  tmux split-window $_cli_open_direction_flag -d
 
   exit
 fi
@@ -56,21 +81,29 @@ fi
 # pull current pane info
 cur_pane=$(tmux list-panes | grep '(active)' | cut -d : -f 1)
 cur_pane_height=$(tmux list-panes | grep '(active)' | cut -d ] -f 1 | cut -d x -f 2)
+cur_pane_width=$(tmux list-panes | grep '(active)' | cut -d [ -f 2 | cut -d x -f 1)
 cur_win=$(tmux list-windows | grep '(active)' | cut -d : -f 1)
 cur_win_height=$(tmux list-windows | grep '(active)' | cut -d ] -f 1 | cut -d [ -f 2 | cut -d x -f 2)
+cur_win_width=$(tmux list-windows | grep '(active)' | cut -d [ -f 2 | cut -d x -f 1)
 
 # get new cli height in lines
 new_cli_height_lines=$((($_cli_open_size * $cur_win_height) / 100))
+new_cli_width_lines=$((($_cli_open_size * $cur_win_width) / 100))
 
 # minimize cli before opening
-tmux resize-pane -D 1000
+tmux resize-pane $_cli_resize_smaller_direction_flag 1000
 
-# only open cli pane if height more than 0
-if [ $new_cli_height_lines -gt 0 ]; then
-    # open cli to calculated height
-    tmux resize-pane -U $new_cli_height_lines
+# only open cli pane if more than 0 size
+if [ $_cli_open_direction_flag == "-v" ]; then
+  if [ $new_cli_height_lines -gt 0 ]; then
+      # open cli to calculated height
+      tmux resize-pane $_cli_resize_bigger_direction_flag $new_cli_height_lines
+  fi
 else
-    echo "NOPE: $new_cli_height_lines"
+  if [ $new_cli_width_lines -gt 0 ]; then
+      # open cli to calculated width
+      tmux resize-pane $_cli_resize_bigger_direction_flag $new_cli_width_lines
+  fi
 fi
 
 # old toggle open functionality
