@@ -49,13 +49,14 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'myusuf3/numbers.vim'
 
-" language support
+" language support/syntax/highlighting
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'rodjek/vim-puppet'
 Bundle 'wavded/vim-stylus'
 Bundle 'vim-scripts/bash-support.vim'
 Bundle 'klen/python-mode'
+Bundle 'vim-scripts/hexHighlight.vim'
 
 " tab/auto complete
 Bundle 'ervandew/supertab'
@@ -233,8 +234,8 @@ noremap <silent> <Leader>cb :silent !~/tvim-toggle-cli-pane -b<CR>
 " Custom FileType Settings
 "-------------------------------------------------------------------------------
 
-" HTML, HTMLDJANGO, LESS
-au FileType coffee,html,htmldjango,less
+" coffeescript, html, htmldjango, jade, less
+au FileType coffee,html,htmldjango,jade,less
     \ set shiftwidth=2 softtabstop=2 tabstop=2 textwidth=239
 
 "-------------------------------------------------------------------------------
