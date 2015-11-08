@@ -16,6 +16,7 @@ So many wasted hours to get these just right... almost.
   ```
   ln -s `pwd`/.spacemacs ~/.spacemacs
   ln -s `pwd`/spacemacs/ ~/.spacemacs.d
+  ln -s `pwd`/maid ~/.maid
   ```
 
 1. Start working those money makers (your fingers)!!!
