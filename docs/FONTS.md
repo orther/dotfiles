@@ -33,5 +33,9 @@ I'm currently using the font `Source Code Pro - Medium` from the Powerline packe
  - Family: `Source Code Pro`
  - Typeface: `Medium`
  - Size: 10
+ - Anti-aliased: `Checked`
 
-1. Check **Anti-aliased** for both `Regular` and `Non-ASCII`
+1. Set the following under the **Text Rendering** group of checkboxes:
+
+ - Draw bold text in bold font: `NOT Checked`
+ - Draw bold text in bright colors: `Checked`
