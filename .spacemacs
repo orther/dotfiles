@@ -93,7 +93,7 @@ before layers configuration."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 11
+                               :size 10
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -175,6 +175,13 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
+
+  ;; Setup clojure pretty symbols (examples below)
+  ;; (setq clojure-enable-fancify-symbols t)
+  ;;   (λ [a](+ a 5)) ;; anonymous function (fn ...)
+  ;;   ƒ(+ % 5)       ;; anonymous function shorthand #(...)
+  ;;   ∈{2 4 6}       ;; set #{...}
+  ;;   Ƥ              ;; partial function (partial ...)
 
   ;; Indentation from
   ;; http://blog.binchen.org/posts/easy-indentation-setup-in-emacs-for-web-development.html
