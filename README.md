@@ -16,6 +16,7 @@ So many wasted hours to get these just right... almost.
   ```
   ln -s `pwd`/.spacemacs ~/.spacemacs
   ln -s `pwd`/spacemacs/ ~/.spacemacs.d
+  ln -s `pwd`/lein/profiles.clj ~/.lein/profiles.clj
   ln -s `pwd`/maid ~/.maid
   ```
 
