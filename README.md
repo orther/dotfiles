@@ -14,6 +14,9 @@ So many wasted hours to get these just right... almost.
 1. Create symbolic links
 
   ```
+  ln -s `pwd`/bashrc ~/.bashrc
+  ln -s `pwd`/bash_profile ~/.bash_profile
+  ln -s `pwd`/desk ~/.desk
   ln -s `pwd`/.spacemacs ~/.spacemacs
   ln -s `pwd`/spacemacs/ ~/.spacemacs.d
   ln -s `pwd`/lein/profiles.clj ~/.lein/profiles.clj
