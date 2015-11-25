@@ -47,8 +47,7 @@ end
 
 Maid.rules do
   rule 'Misc Screenshots' do
-    pdir('~/Desktop/Screen shot *').each do |path|
-      # log("screen shots w/ reject" + path)
+    pdir('~/Desktop/Screen Shot *').each do |path|
       if 1.day.since?(used_or_created_at(path))
         move(path, '~/Documents/Misc Screenshots/')
       end
