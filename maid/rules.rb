@@ -57,7 +57,7 @@ Maid.rules do
 
   rule 'Remove Desktop files not accessed within the last 3 days' do
     pdir('~/Desktop/*').each do |path|
-      if 1.week.since?(used_or_created_at(path))
+      if 3.day.since?(used_or_created_at(path))
         trash(path)
       end
     end
@@ -65,7 +65,7 @@ Maid.rules do
 
   rule 'Remove Download files not accessed within the last 3 days' do
     pdir('~/Downloads/*').each do |path|
-      if 1.week.since?(used_or_created_at(path))
+      if 3.day.since?(used_or_created_at(path))
         trash(path)
       end
     end
