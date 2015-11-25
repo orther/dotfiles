@@ -3,6 +3,37 @@
 # The Maid::Tools source is a good reference while writing maid rules:
 #   https://github.com/benjaminoakes/maid/blob/master/lib/maid/tools.rb
 
+# Protected Dir - Return the results from the Maid::Tools.dir function with
+# protected paths removed.
+#
+## Examples
+#
+#     pdir('~/Downloads/*.zip')
+#     pdir('~/Downloads/*.{exe,deb,dmg,pkg,rpm}')
+#     pdir(['~/Downloads/*.zip', '~/Dropbox/*.zip'])
+#     pdir(%w(~/Downloads/*.zip ~/Dropbox/*.zip))
+#     pdir('~/{Downloads,Dropbox}/*.zip')
+#     pdir('~/Music/**/*.m4a')
+def pdir(globs)
+  return dir(globs).reject { |p| protected_path?(p) }
+end
+
+# This function is meant to be a single place to define conditions to
+# determine if a file or folder is protected (don't get effected by rules)
+#
+# ## Example
+#
+#     protected_path?("foo.zip") # => false
+def protected_path?(path)
+  # NOTE: this requires tag to be installed `brew install tag`
+  ['Red'].each do |tag|
+    if contains_tag?(path, tag)
+      return true
+    end
+  end
+  return false
+end
+
 # Return the used_at time (Spotlight metadata attribute kMDItemLastUsedDate)
 # if available, otherwise return created_at time (Unix ctime) which is should
 # always be available.
@@ -16,7 +47,8 @@ end
 
 Maid.rules do
   rule 'Misc Screenshots' do
-    dir('~/Desktop/Screen shot *').each do |path|
+    pdir('~/Desktop/Screen shot *').each do |path|
+      # log("screen shots w/ reject" + path)
       if 1.day.since?(used_or_created_at(path))
         move(path, '~/Documents/Misc Screenshots/')
       end
@@ -24,7 +56,7 @@ Maid.rules do
   end
 
   rule 'Remove Desktop files not accessed within the last 3 days' do
-    dir('~/Desktop/*').each do |path|
+    pdir('~/Desktop/*').each do |path|
       if 1.week.since?(used_or_created_at(path))
         trash(path)
       end
@@ -32,7 +64,7 @@ Maid.rules do
   end
 
   rule 'Remove Download files not accessed within the last 3 days' do
-    dir('~/Downloads/*').each do |path|
+    pdir('~/Downloads/*').each do |path|
       if 1.week.since?(used_or_created_at(path))
         trash(path)
       end
