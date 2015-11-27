@@ -27,7 +27,7 @@ export SCM_CHECK=true
 #export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
 
 # TODO: move this into it's own plugin?
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin"
 
 export PATH=$PATH:/usr/local/packer
 
@@ -38,11 +38,11 @@ export ATLAS_TOKEN="Erh8Qcvox7p63SoJanLiNWsPoHsUWsPTtgQcbxvozVLdMD7uz-7_T9o7SjV9
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-# Load Bash It
-source $BASH_IT/bash_it.sh
-
 # brew
 export PATH="/usr/local/sbin:$PATH"
+
+# Load Bash It
+source $BASH_IT/bash_it.sh
 
 # nvm
 export NVM_DIR=~/.nvm
@@ -60,3 +60,10 @@ source $(brew --prefix nvm)/nvm.sh
 if [[ $DESK_ENV ]]; then
     . $DESK_ENV
 fi
+
+# GNU Command Line Tools on Mac OS X
+# https://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
+export MANPATH="$(brew --prefix findutils)/share/man:$MANPATH"
+export MANPATH="$(brew --prefix gnu-tar)/libexec/gnuman:$MANPATH"
