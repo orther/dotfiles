@@ -41,12 +41,12 @@ export EDITOR="$VISUAL"
 # brew
 export PATH="/usr/local/sbin:$PATH"
 
-# Load Bash It
-source $BASH_IT/bash_it.sh
-
 # nvm
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
+
+# Load Bash It
+source $BASH_IT/bash_it.sh
 
 # setup docker
 # eval "$(docker-machine env default)"

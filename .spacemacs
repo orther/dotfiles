@@ -28,7 +28,8 @@
      ;; org
      osx
      (shell :variables
-            shell-default-height 30
+            shell-default-shell 'shell
+            shell-default-height 10
             shell-default-position 'top)
      syntax-checking
      version-control
