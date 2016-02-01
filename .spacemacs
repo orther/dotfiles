@@ -30,6 +30,7 @@ values."
      git
      github
      org
+     osx
      pandoc
      restclient
      search-engine
@@ -41,7 +42,7 @@ values."
      syntax-checking
      version-control
 
-     themes-megapack
+     ;; themes-megapack
 
      ;; configuration files
      dockerfile
@@ -66,7 +67,7 @@ values."
      ;; purescript
      python
      react
-     ruby
+     ;; ruby
      ;; rust
      ;; sql
      ;; swift
@@ -146,7 +147,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("Source Code Pro for Powerline"
                                :size 13
                                :weight normal
                                :width normal
