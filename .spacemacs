@@ -27,20 +27,29 @@ values."
      better-defaults
      colors
      dash
+     eyebrowse
+     floobits
+     (geolocation :variables
+                  sunshine-appid "6286aa388bb2c000ac7a0560fda21044"
+                  sunshine-location "92069,USA"
+                  sunshine-show-icons t
+                  geolocation-enable-weather-forecast t)
      git
      github
      org
      osx
      pandoc
-     restclient
-     search-engine
+     ;; restclient
+     ;; search-engine
      (shell :variables
-            shell-default-shell 'shell
+            shell-default-shell 'term
             shell-default-height 10
             shell-default-position 'top)
      spell-checking
      syntax-checking
      version-control
+
+     wakatime
 
      ;; themes-megapack
 
@@ -72,6 +81,9 @@ values."
      ;; sql
      ;; swift
      ;; vimscript
+
+
+     ;; js-slime
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -80,6 +92,7 @@ values."
    dotspacemacs-additional-packages
    '(
      editorconfig
+     jss
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -122,7 +135,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner 'random
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'.
    ;; (default '(recents projects))
@@ -148,7 +161,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro for Powerline"
-                               :size 13
+                               :size 11
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -285,6 +298,13 @@ in `dotspacemacs/user-config'."
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
+  ;; javascript - default indent 2 spaces
+  ;; (setq-default js2-basic-offset 2)
+  ;; javascript - include underscore in word motions
+  (add-hook 'js2-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+
+  ;; python - include underscore in word motions
+  (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -294,10 +314,15 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(js2-strict-trailing-comma-warning nil))
+ '(js2-strict-trailing-comma-warning nil)
+ '(wakatime-api-key "363149d5-1c66-43b5-bbcd-bd6cf03c1408")
+ '(wakatime-cli-path "/usr/local/bin/wakatime"))
+ '(editorconfig-mode 1)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:family "Source Code Pro for Powerline" :foundry "nil" :slant normal :weight normal :height 130 :width normal))))
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
