@@ -27,7 +27,7 @@ export SCM_CHECK=true
 #export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
 
 # TODO: move this into it's own plugin?
-export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin"
+# export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin"
 
 export PATH=$PATH:/usr/local/packer
 
@@ -40,10 +40,7 @@ export EDITOR="$VISUAL"
 
 # brew
 export PATH="/usr/local/sbin:$PATH"
-
-# nvm
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+export HOMEBREW_GITHUB_API_TOKEN="5c42ff79f7ee80204a7fa9bc9e1528dd1938265a" # orther GitHub OAuth HOMEBREW
 
 # Load Bash It
 source $BASH_IT/bash_it.sh
@@ -61,9 +58,17 @@ if [[ $DESK_ENV ]]; then
     . $DESK_ENV
 fi
 
+export NVM_DIR="/Users/brandon/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
 # GNU Command Line Tools on Mac OS X
 # https://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 export MANPATH="$(brew --prefix findutils)/share/man:$MANPATH"
 export MANPATH="$(brew --prefix gnu-tar)/libexec/gnuman:$MANPATH"
+
+
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
+export PATH=$PATH:~/bin
+export PATH=$PATH:~/elixir-v1.3.0-rc.1-Precompiled/bin
