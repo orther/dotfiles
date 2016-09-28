@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     shell-scripts
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -59,6 +60,7 @@ values."
 
      docker
      salt
+     yaml
 
      clojure
      elixir
@@ -72,7 +74,10 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages
+   '(
+     editorconfig
+     )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be install and loaded.
@@ -141,7 +146,8 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro for Powerline"
+   dotspacemacs-default-font '("Fira Code"
+                               ;;"Source Code Pro for Powerline"
                                :size 11
                                :weight normal
                                :width normal
@@ -219,13 +225,13 @@ values."
    ;; If non nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
    ;; nil to boost the loading time. (default t)
-   dotspacemacs-loading-progress-bar t
+   dotspacemacs-loading-progress-bar nil
    ;; If non nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
    dotspacemacs-fullscreen-at-startup nil
    ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
    ;; Use to disable fullscreen animations in OSX. (default nil)
-   dotspacemacs-fullscreen-use-non-native nil
+   dotspacemacs-fullscreen-use-non-native t
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
@@ -305,6 +311,7 @@ you should place your code here."
   ;; '(wakatime-api-key "363149d5-1c66-43b5-bbcd-bd6cf03c1408")
   ;; '(wakatime-cli-path "/usr/local/bin/wakatime")
   ;; '(editorconfig-mode 1)
+  (editorconfig-mode 1)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -317,7 +324,7 @@ you should place your code here."
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (sass-mode salt-mode mmm-jinja2 yaml-mode php-auto-yasnippets orgit org markdown-toc magit-gitflow magit-gh-pulls livid-mode skewer-mode json-mode js2-refactor helm-gitignore helm-company helm-c-yasnippet github-search github-clone git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ gist gh logito flyspell-correct-helm flycheck-pos-tip flycheck-mix evil-magit magit git-commit drupal-mode docker tablist magit-popup company-web web-completion-data company-tern dash-functional company-statistics company-quickhelp pos-tip clojure-snippets clj-refactor inflections edn multiple-cursors paredit cider queue auto-yasnippet alchemist ac-ispell xterm-color web-mode web-beautify wakatime-mode tern tagedit smeargle slim-mode shell-pop scss-mode reveal-in-osx-finder rainbow-mode rainbow-identifiers phpunit phpcbf php-extras pbcopy osx-trash mwim multi-term mmm-mode markdown-mode simple-httpd less-css-mode launchctl json-snatcher json-reformat js2-mode js-doc jade-mode helm-css-scss haml-mode gitignore-mode github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter pcache gh-md flyspell-correct flycheck floobits with-editor eshell-z eshell-prompt-extras esh-help emmet-mode emacs-eclim php-mode dockerfile-mode docker-tramp diff-hl company color-identifiers-mode coffee-mode peg cider-eval-sexp-fu clojure-mode yasnippet auto-dictionary elixir-mode auto-complete ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+    (editorconfig osx-dictionary dumb-jump company-emacs-eclim eclim fish-mode company-shell cider-spy sass-mode salt-mode mmm-jinja2 yaml-mode php-auto-yasnippets orgit org markdown-toc magit-gitflow magit-gh-pulls livid-mode skewer-mode json-mode js2-refactor helm-gitignore helm-company helm-c-yasnippet github-search github-clone git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ gist gh logito flyspell-correct-helm flycheck-pos-tip flycheck-mix evil-magit magit git-commit drupal-mode docker tablist magit-popup company-web web-completion-data company-tern dash-functional company-statistics company-quickhelp pos-tip clojure-snippets clj-refactor inflections edn multiple-cursors paredit cider queue auto-yasnippet alchemist ac-ispell xterm-color web-mode web-beautify wakatime-mode tern tagedit smeargle slim-mode shell-pop scss-mode reveal-in-osx-finder rainbow-mode rainbow-identifiers phpunit phpcbf php-extras pbcopy osx-trash mwim multi-term mmm-mode markdown-mode simple-httpd less-css-mode launchctl json-snatcher json-reformat js2-mode js-doc jade-mode helm-css-scss haml-mode gitignore-mode github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter pcache gh-md flyspell-correct flycheck floobits with-editor eshell-z eshell-prompt-extras esh-help emmet-mode emacs-eclim php-mode dockerfile-mode docker-tramp diff-hl company color-identifiers-mode coffee-mode peg cider-eval-sexp-fu clojure-mode yasnippet auto-dictionary elixir-mode auto-complete ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
  '(wakatime-api-key "363149d5-1c66-43b5-bbcd-bd6cf03c1408"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
