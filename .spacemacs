@@ -31,34 +31,39 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     markdown
-     auto-completion
-     (auto-completion :variables
-                      auto-completion-return-key-behavior nil
-                      auto-completion-tab-key-behavior 'complete
-                      auto-completion-complete-with-key-sequence nil
-                      auto-completion-complete-with-key-sequence-delay 0.1
-                      auto-completion-private-snippets-directory nil)
      colors
      elixir
      emacs-lisp
-     floobits
      git
      helm
-     html
-     ;; imenu-list
-     javascript
-     ;; (markdown :variables markdown-live-preview-envine 'vmd)
-     ;; nginx
      osx
-     react
-     spell-checking
-     syntax-checking
+     shell-scripts
      version-control
      yaml
+
+     html
+     javascript
+     react
+     syntax-checking
+
+     markdown
+     ;; (markdown :variables markdown-live-preview-envine 'vmd)
+
+     (auto-completion :variables
+                      auto-completion-return-key-behavior 'complete
+                      auto-completion-tab-key-behavior 'cycle
+                      auto-completion-complete-with-key-sequence nil
+                      auto-completion-complete-with-key-sequence-delay 0.1
+                      auto-completion-private-snippets-directory nil)
+
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
+
+     ;; floobits
+     ;; imenu-list
+     ;; nginx
+     ;; (spell-checking :variables =enable-flyspell-auto-completion= t)
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -140,7 +145,10 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(badwolf)
+   dotspacemacs-themes '(badwolf
+                         ujelly
+                         spacemacs-dark
+                         spacegray)
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -160,7 +168,7 @@ values."
                                :size 11
                                :weight normal
                                :width normal
-                               :powerline-scale 1)
+                               :powerline-scale 1.4)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -333,14 +341,16 @@ you should place your code here."
   ;; User Interface
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-  ;; Use UTF-8 characters for powerline separator
-  (setq powerline-default-separator 'slant)
-
   ;; Show current time on mode-line
   (display-time-mode t)
 
-  ;; Hide minor-modes on mode-line
-  (spaceline--unicode-number t)
+  ;; Use UTF-8 characters for powerline separator
+  (setq powerline-default-separator 'box
+        ;; Hide minor-modes on mode-line
+        spaceline-buffer-encoding-abbrev-p nil
+        spaceline-erc-track-p nil
+        spaceline-minor-modes-p nil
+        spaceline-version-control-p nil)
 
   ;; Add vertical bar next to line numbers
   (setq linum-format "%4d \u2502 ")
@@ -361,7 +371,7 @@ you should place your code here."
 
   ;; Neotree
   (setq neo-theme (if window-system 'icons 'arrow))
-  (setq neo-hidden-regexp-list '("^\\." ".log$" "node_modules"))
+  (setq neo-hidden-regexp-list '("^\\." ".log$" "node_modules" ".happy-pack"))
   (setq-default neo-show-hidden-files t)
 
   ;; Projectile
@@ -412,6 +422,7 @@ you should place your code here."
   '(version-control :variables
                     version-control-global-margin t)
   )
+
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
 This is an auto-generated function, do not modify its content directly, use
@@ -422,9 +433,15 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
+ '(notmuch-search-line-faces
+   (quote
+    (("unread" :foreground "#aeee00")
+     ("flagged" :foreground "#0a9dff")
+     ("deleted" :foreground "#ff2c4b" :bold t))))
  '(package-selected-packages
    (quote
-    (rainbow-mode rainbow-identifiers color-identifiers-mode yaml-mode xterm-color ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit spaceline smeargle slim-mode shell-pop scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-delimiters pug-mode popwin persp-mode pcre2el pbcopy paradox osx-trash osx-dictionary orgit org-plus-contrib org-bullets open-junk-file ob-elixir neotree multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode launchctl json-mode js2-refactor js-doc info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md flyspell-correct-helm flycheck-pos-tip flycheck-mix flx-ido floobits fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump diff-hl company-web company-tern company-statistics column-enforce-mode coffee-mode clean-aindent-mode badwolf-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile all-the-icons alchemist aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (spacegray-theme ujelly-theme fish-mode company-shell rainbow-mode rainbow-identifiers color-identifiers-mode yaml-mode xterm-color ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit spaceline smeargle slim-mode shell-pop scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-delimiters pug-mode popwin persp-mode pcre2el pbcopy paradox osx-trash osx-dictionary orgit org-plus-contrib org-bullets open-junk-file ob-elixir neotree multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode launchctl json-mode js2-refactor js-doc info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md flyspell-correct-helm flycheck-pos-tip flycheck-mix flx-ido floobits fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump diff-hl company-web company-tern company-statistics column-enforce-mode coffee-mode clean-aindent-mode badwolf-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile all-the-icons alchemist aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
