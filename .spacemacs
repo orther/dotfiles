@@ -73,6 +73,7 @@ values."
    '(
      all-the-icons
      editorconfig
+     magithub
      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -371,11 +372,19 @@ you should place your code here."
 
   ;; Neotree
   (setq neo-theme (if window-system 'icons 'arrow))
-  (setq neo-hidden-regexp-list '("^\\." ".log$" "node_modules" ".happy-pack"))
+  (setq neo-hidden-regexp-list '("^\\." ".log$" "node_modules" ".happypack"))
   (setq-default neo-show-hidden-files t)
 
   ;; Projectile
   ;; (setq projectile-enable-caching t)
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; GitHub
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+  (use-package magithub
+    :after magit
+    :config (magithub-feature-autoinject t))
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Editing
