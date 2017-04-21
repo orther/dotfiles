@@ -35,8 +35,8 @@ values."
      elixir
      emacs-lisp
      git
-     ;; helm
-     ivy
+     helm
+     ;; ivy
      osx
      org
      shell-scripts
