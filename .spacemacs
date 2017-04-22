@@ -76,6 +76,7 @@ values."
      all-the-icons
      editorconfig
      magithub
+     eslintd-fix
      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -379,6 +380,14 @@ you should place your code here."
   ;; Editing
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+  (use-package eslintd-fix
+    :defer t
+    :commands eslintd-fix-mode
+    :init
+    (progn
+      (add-hook 'js2-mode-hook #'eslintd-fix-mode t)
+      (add-hook 'react-mode-hook #'eslintd-fix-mode t)))
+
   ;; fix powerline seperator coloring
   (setq ns-use-srgb-colorspace nil)
 
@@ -411,7 +420,7 @@ you should place your code here."
                   (or (buffer-file-name) default-directory)
                   "node_modules"))
            (eslint (and root
-                        (expand-file-name "node_modules/eslint/bin/eslint.js"
+                        (expand-file-name "node_modules/eslint_d/bin/eslint.js"
                                           root))))
       (when (and eslint (file-executable-p eslint))
         (setq-local flycheck-javascript-eslint-executable eslint)))
