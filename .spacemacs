@@ -385,6 +385,9 @@ you should place your code here."
   ;; enable editorconfig
   (editorconfig-mode 1)
 
+  ;; disable js2 warnings (orange) since they do not respect eslintrc
+  (setq js2-mode-show-strict-warnings nil)
+
   ;; Set preferred indent levels
   (setq-default js2-basic-offset 2
                 js-indent-level 2
