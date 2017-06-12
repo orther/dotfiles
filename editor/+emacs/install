@@ -2,7 +2,10 @@
 
 case $OSTYPE in
     darwin*)
-        brew install emacs --with-modules --with-librsvg --with-imagemagick --with-gnutls --with-cocoa
+        brew tap d12frosted/emacs-plus
+        brew install emacs-plus --without-spacemacs-icon
+        # brew install emacs --with-modules --with-librsvg --with-imagemagick --with-gnutls --with-cocoa
+        echo "This creates a symlink and not an alias. So Spotlight may not find it (tested on macOS Sierra 10.12.2). Spotlight indexes symlinks to files that are treated as system files, but it doesn’t show them in the GUI. It does show aliases though, so you could just command-option-drag /usr/local/Cellar/emacs-plus/*/Emacs.app to /Applications/ from Finder."
         ;;
     linux*)
         if [[ -f /etc/arch-release ]]; then
@@ -14,5 +17,6 @@ case $OSTYPE in
 esac
 
 if [[ ! -d "$HOME/.emacs.d" ]]; then
-    git clone --recursive "https://github.com/hlissner/.emacs.d" "$HOME/.emacs.d"
+    echo "NO EMACS.D"
+    # git clone --recursive "https://github.com/hlissner/.emacs.d" "$HOME/.emacs.d"
 fi
