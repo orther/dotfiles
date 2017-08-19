@@ -1,0 +1,1 @@
+/Users/brandon/.config/fisherman/ssh-config.d/functions/ssh-config.d_ssh.fish

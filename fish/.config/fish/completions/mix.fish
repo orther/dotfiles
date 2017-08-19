@@ -1,0 +1,1 @@
+/Users/brandon/.config/fisherman/mix/completions/mix.fish

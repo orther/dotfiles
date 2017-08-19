@@ -1,0 +1,1 @@
+/Users/brandon/.config/fisherman/get/completions/get.fish

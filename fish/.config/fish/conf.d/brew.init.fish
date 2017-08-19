@@ -1,0 +1,1 @@
+/Users/brandon/.config/fisherman/brew/init.fish

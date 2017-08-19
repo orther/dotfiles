@@ -1,0 +1,1 @@
+/Users/brandon/.config/fisherman/ssh-term-helper/functions/ssh.fish

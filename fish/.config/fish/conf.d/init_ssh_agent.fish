@@ -1,0 +1,1 @@
+/Users/brandon/.config/fisherman/ssh-agent/conf.d/init_ssh_agent.fish
