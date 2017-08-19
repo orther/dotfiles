@@ -1,1 +1,0 @@
-/Users/brandon/.config/fisherman/ssh-agent/functions/__test_ssh_identities.fish

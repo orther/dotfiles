@@ -1,1 +1,0 @@
-/Users/brandon/.config/fisherman/ssh-agent/functions/__add_private_keys.fish
