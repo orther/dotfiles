@@ -19,8 +19,13 @@ So many wasted hours to get these just right... almost.
   ln -s `pwd`/desk ~/.desk
   ln -s `pwd`/.spacemacs ~/.spacemacs
   ln -s `pwd`/spacemacs/ ~/.spacemacs.d
+  ln -s `pwd`/spacemacs/local/spaceline-all-the-icons.el ~/.spaceline-all-the-icons.el
   ln -s `pwd`/lein/profiles.clj ~/.lein/profiles.clj
   ln -s `pwd`/maid ~/.maid
+  ```
+
+  ```
+  ln -s `pwd`/spacemacs/local/spaceline-all-the-icons.el .spaceline-all-the-icons.el
   ```
 
 1. Start working those money makers (your fingers)!!!
