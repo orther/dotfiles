@@ -32,9 +32,10 @@ endif
 brew-basic: brew
 ifeq ($(UNAME),Darwin)
 		@echo "Installing basic packages"
-		@echo "Sign into Mac App Store to proceed"
-		@read -p "AppStore email: " email; \
-		mas signin $email || true
+#		@echo "Sign into Mac App Store to proceed"
+#		@read -p "AppStore email: brandon@omt.tech" email;
+#		mas signin $email || true
+		mas signin brandon@omt.tech || true
 		brew bundle --file=Brewfile
 endif
 
