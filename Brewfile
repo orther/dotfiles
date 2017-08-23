@@ -50,7 +50,7 @@ brew 'offlineimap'
 #### editor
 tap 'd12frosted/emacs-plus'
 brew 'aspell'
-brew 'd12frosted/emacs-plus/emacs-plus'
+brew 'd12frosted/emacs-plus/emacs-plus', args: ['with-no-title-bars', 'without-spacemacs-icon']
 brew 'editorconfig'
 brew 'markdown'
 brew 'neovim'

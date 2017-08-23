@@ -36,7 +36,7 @@ ifeq ($(UNAME),Darwin)
 #		@read -p "AppStore email: brandon@omt.tech" email;
 #		mas signin $email || true
 		mas signin brandon@omt.tech || true
-		brew bundle --file=Brewfile
+		brew bundle --file=Brewfile --verbose
 endif
 
 brew-extras: brew
