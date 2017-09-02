@@ -19,15 +19,19 @@ cask 'ubersicht'
 #### shell
 brew 'fish'
 brew 'fzf'
-brew 'justwatchcom/gopass/gopass'
 brew 'm-cli'
-brew 'pass'
 brew 'reattach-to-user-namespace'
 brew 'rlwrap'
 brew 'tldr'
 # TODO replace current iterm2 install w/ this
 # cask 'iterm2'
+
+# keeping secrets
 tap 'justwatchcom/gopass'
+brew 'justwatchcom/gopass/gopass'
+brew 'pass'
+cask 'qtpass'
+cask 'keybase'
 
 #### files
 brew 'exa'
@@ -46,6 +50,7 @@ brew 'jq'
 brew 'mobile-shell'
 brew 'net-snmp'
 brew 'offlineimap'
+cask 'qutebrowser'
 
 #### editor
 tap 'd12frosted/emacs-plus'
