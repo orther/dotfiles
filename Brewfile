@@ -12,7 +12,7 @@ cask 'xquartz'
 
 #### ui
 tap 'crisidev/chunkwm'
-brew 'chunkwm'
+# chunkwm'
 brew 'chunkwm', restart_service: :changed
 cask 'ubersicht'
 
@@ -55,7 +55,7 @@ cask 'qutebrowser'
 #### editor
 tap 'd12frosted/emacs-plus'
 brew 'aspell'
-brew 'd12frosted/emacs-plus/emacs-plus', args: ['with-no-title-bars', 'without-spacemacs-icon']
+brew 'd12frosted/emacs-plus/emacs-plus', args: ['without-spacemacs-icon']
 brew 'editorconfig'
 brew 'markdown'
 brew 'neovim'
@@ -125,4 +125,5 @@ cask 'font-iosevka'
 mas 'Slack', id: 803453959
 
 #### design
+mas 'Gravit Designer', id: 1207744923
 mas 'Pixelmator', id: 407963104
