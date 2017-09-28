@@ -25,6 +25,9 @@ export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin"
 # export PATH="/usr/local/sbin:$PATH"
 export HOMEBREW_GITHUB_API_TOKEN="$(pass api/orther@github.com/homebrew)" # orther GitHub OAuth HOMEBREW
 
+## yarn global bin
+#export PATH="$PATH:`yarn global bin`"
+
 # Load Bash It
 source $BASH_IT/bash_it.sh
 
@@ -40,7 +43,7 @@ export MANPATH="$(brew --prefix gnu-tar)/libexec/gnuman:$MANPATH"
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 
 # TODO: can we organize this better and use less paths?
-export PATH=$PATH:~/bin
+export PATH=$PATH:~/.bin
 export PATH=$PATH:/usr/local/bin
 
 # TODO: use some elixir version manager instead?
