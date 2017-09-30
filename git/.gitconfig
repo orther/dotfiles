@@ -1,8 +1,15 @@
 [user]
 	name = Brandon Orther
 	email = brandon@omt.tech
+
 [push]
 	default = simple
+
 [core]
 	editor = /usr/bin/vim
-	excludesfile = /Users/brandon/.gitignore_global
+	excludesfile = /Users/brandon/.gitignore.global
+	attributesfile = ~/.gitattributes
+
+# use separate file github token
+[include]
+  path = ~/.gitconfig.local
