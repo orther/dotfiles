@@ -32,6 +32,7 @@ brew 'justwatchcom/gopass/gopass'
 brew 'pass'
 cask 'qtpass'
 cask 'keybase'
+cask 'gpgtools'
 
 #### files
 brew 'exa'
@@ -51,6 +52,14 @@ brew 'mobile-shell'
 brew 'net-snmp'
 brew 'offlineimap'
 cask 'qutebrowser'
+cask 'deluge'
+cask 'dropbox'
+cask 'evernote'
+cask 'google-chrome'
+cask 'google-chrome-canary'
+cask 'google-drive'
+cask 'mailplane'
+cask 'slack'
 
 #### editor
 tap 'd12frosted/emacs-plus'
@@ -66,7 +75,6 @@ cask 'karabiner-elements'
 tap 'koekeishiya/formulae'
 brew 'koekeishiya/formulae/khd'
 brew 'khd', restart_service: :changed
-
 
 #### vcs
 brew 'gist'
@@ -98,6 +106,10 @@ brew 'ruby'
 brew 'sassc'
 cask 'java'
 
+#### database
+cask 'datagrip'
+cask 'postgres'
+
 #### misc dev
 brew 'asciinema'
 brew 'exercism'
@@ -109,9 +121,11 @@ brew 'yarn'
 cask 'reactotron'
 cask 'sauce-connect'
 cask 'wkhtmltopdf'
+cask 'spectacle'
 
 #### media
 cask 'google-play-music-desktop-player'
+cask 'sonos'
 cask 'vlc'
 
 # fonts
@@ -122,7 +136,7 @@ cask 'font-fira-sans'
 cask 'font-iosevka'
 
 #### communication
-mas 'Slack', id: 803453959
+#mas 'Slack', id: 803453959
 
 #### design
 mas 'Gravit Designer', id: 1207744923
