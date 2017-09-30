@@ -1,0 +1,8 @@
+[user]
+	name = Brandon Orther
+	email = brandon@omt.tech
+[push]
+	default = simple
+[core]
+	editor = /usr/bin/vim
+	excludesfile = /Users/brandon/.gitignore_global
