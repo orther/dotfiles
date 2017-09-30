@@ -1,7 +1,7 @@
 BREW := $(shell command -v brew 2> /dev/null)
 STOW := $(shell command -v stow 2> /dev/null)
 SHELL :=  $(shell which bash)
-NEW_SHELL := $(shell which fish)
+NEW_SHELL := $(shell which bash)
 IGNORED := Brewfile Brewfile-extras Makefile README.org CNAME install.sh docs result maid README.md
 # PRIVATE_REPO := git@github.com:peel/dotfiles-private.git
 # ELIXIR_EXTRAS := git@github.com:peel/dcdeps.gt
@@ -66,13 +66,27 @@ endif
 else
 		@echo "Not setting up shell for $(USER) instead of $(CURRENT_SHELL)"
 endif
+ifeq ("$(wildcard $(HOME)/.bash_it/)","")
+		@echo "Installing up bash-it"
+		@git clone --depth=1 https://github.com/Bash-it/bash-it.git $(HOME)/.bash_it
+		@$(HOME)/.bash_it/install.sh --no-modify-config
+endif
 		@echo "Installing fish plugins"
-		@$(NEW_SHELL) -c "fisher"
+		@fish -c "fisher"
+#		@$(NEW_SHELL) -c "fisher"
+
+secrets:
+ifeq ("$(wildcard $(HOME)/.password-store/)","")
+		@echo "Setup crypto secret tools and data"
+		@gopass clone git@github.com:orther/password-store.git
+endif
 
 editor:
 ifeq ("$(wildcard $(HOME)/.emacs.d/)","")
 		@echo "Setting up Emacs"
-		@git clone --recursive http://github.com/orther/.emacs.d $(HOME)/.emacs.d
+		@git clone --recursive http://github.com/orther/doom-emacs $(HOME)/.emacs.d
+		@ln -s "$(HOME)/.emacs.d/init.orther.el" "$(HOME)/.emacs.d/init.el"
+		@make install
 #ifeq ("$(wildcard $(HOME)/.spacemacs.d/)","")
 #		@mkdir "$(HOME)/.spacemacs.d"
 #endif
