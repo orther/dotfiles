@@ -1,7 +1,13 @@
+fisherman/await
+oh-my-fish/plugin-bak
 oh-my-fish/theme-bobthefish
 oh-my-fish/plugin-brew
+oh-my-fish/plugin-config
 brgmnn/fish-docker-compose
 fisherman/fzf
+fisherman/get
+fisherman/getopts
+fisherman/last_job_id
 belltoy/plugin-mix
 tuvistavie/fish-ssh-agent
 oh-my-fish/plugin-ssh-config.d
