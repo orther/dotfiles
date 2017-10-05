@@ -23,6 +23,7 @@ brew 'm-cli'
 brew 'reattach-to-user-namespace'
 brew 'rlwrap'
 brew 'tldr'
+brew 'gnu-tar'
 # TODO replace current iterm2 install w/ this
 # cask 'iterm2'
 
