@@ -1,1 +1,0 @@
-/Users/brandon/.config/fisherman/bak/init.fish

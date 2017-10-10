@@ -1,1 +1,0 @@
-/Users/brandon/.config/fisherman/ssh-config.d/init.fish
