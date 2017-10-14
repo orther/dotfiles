@@ -80,6 +80,7 @@ brew 'khd', restart_service: :changed
 #### vcs
 brew 'gist'
 brew 'git'
+cask 'gitkraken'
 brew 'hub'
 brew 'mercurial'
 brew 'tig'
@@ -91,8 +92,10 @@ brew 'awscli'
 cask 'ngrok'
 mas 'CCMenu', id: 603117688
 
-#### vm
+#### vm / containers
 cask 'virtualbox'
+cask 'docker'
+cask 'kitematic'
 
 #### languages
 brew 'elixir'
