@@ -1,7 +1,7 @@
 [user]
   user = orther
 	name = Brandon Orther
-	email = brandon@omt.tech
+	email = brandon@uptrend.tech
 
 [push]
 	default = simple
@@ -30,6 +30,15 @@
 
 	# Show the diff between the latest commit and the current state
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+
+[github]
+	user = orther
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 
 # rewrites of repo paths
 # [url "git@github.com:"]
