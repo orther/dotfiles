@@ -14,8 +14,8 @@ set -g fish_key_bindings fish_vi_key_bindings
 each 'source $_1' (ls $fish/aliases/*)
 
 # paths
-set PATH $PATH $HOME/.bin
-set PATH $PATH /Applications/Postgres.app/Contents/Versions/latest/bin
+set PATH $HOME/.bin $PATH
+# set PATH $PATH /Applications/Emacs.app/Contents/MacOS/bin
 
 # homebrew
 if test -e /usr/local/bin/brew
