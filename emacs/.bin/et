@@ -22,4 +22,7 @@
 # NOTE This script is based on code provided in this blog post:
 #   - http://blog.kdheepak.com/emacs-workflow-using-emacs-in-the-terminal.html
 
+# enable full color in terminal emacs
+export TERM=xterm-24bit
+
 exec emacsclient -a "" -t "$@"
