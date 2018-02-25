@@ -1,6 +1,8 @@
 #!/bin/bash
 
-#
+chunkc core::log_file /usr/local/var/log/chunkwm/chunkwm.err.log
+chunkc core::log_level warn
+
 # NOTE: specify the absolutepath to the directory to use when
 #       loading a plugin. '~' expansion is supported.
 #
@@ -31,8 +33,8 @@ chunkc set global_desktop_offset_left    4
 chunkc set global_desktop_offset_right   4
 chunkc set global_desktop_offset_gap     1
 
-chunkc set desktop_padding_step_size     10.0
-chunkc set desktop_gap_step_size         5.0
+chunkc set desktop_padding_step_size     1.0
+chunkc set desktop_gap_step_size          5.0
 
 chunkc set bsp_spawn_left                1
 chunkc set bsp_optimal_ratio             1.618
