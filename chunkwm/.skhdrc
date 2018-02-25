@@ -9,7 +9,6 @@ alt - e : chunkc tiling::desktop --layout bsp
 alt - s : chunkc tiling::desktop --layout monocle
 
 # kill focused window
-
 shift + alt - q : chunkc tiling::window --close
 
 # change focus
@@ -18,10 +17,7 @@ alt - j : chunkc tiling::window --focus south
 alt - k : chunkc tiling::window --focus north
 alt - l : chunkc tiling::window --focus east
 
-alt - p : chunkc tiling::window --focus prev
-alt - n : chunkc tiling::window --focus next
-
-# change focus
+# change monitor focus
 alt - n : chunkc tiling::monitor -f next
 
 # move focused window
@@ -30,19 +26,14 @@ shift + alt - j : chunkc tiling::window --warp south
 shift + alt - k : chunkc tiling::window --warp north
 shift + alt - l : chunkc tiling::window --warp east
 
-alt - r : chunkc tiling::desktop --rotate 90
+alt - r : chunkc tiling::desktop --rotate 270
+shift + alt - r : chunkc tiling::desktop --rotate 90
 
-# move focused container to workspace
+# send window to monitor and follow focus
 shift + alt - n : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop); chunkc tiling::monitor -f $(chunkc get _last_active_desktop)
-# shift + alt - m : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop)
-# shift + alt - p : chunkc tiling::window --send-to-desktop prev
-# shift + alt - n : chunkc tiling::window --send-to-desktop next
-shift + alt - 1 : chunkc tiling::window --send-to-desktop 1
-shift + alt - 2 : chunkc tiling::window --send-to-desktop 2
-shift + alt - 3 : chunkc tiling::window --send-to-desktop 3
-shift + alt - 4 : chunkc tiling::window --send-to-desktop 4
-shift + alt - 5 : chunkc tiling::window --send-to-desktop 5
-shift + alt - 6 : chunkc tiling::window --send-to-desktop 6
+# shift + alt - n  : chunkc tiling::window --send-to-desktop prev; chunkc tiling::desktop -f prev
+# shift + alt - n  : chunkc tiling::window --send-to-monitor 2; chunkc tiling::monitor -f 2
+# shift + alt - m  : chunkc tiling::window --send-to-monitor 1; chunkc tiling::monitor -f 1
 
 # resize tiling by moving region borders
 cmd + alt - h : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge west; chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge east
