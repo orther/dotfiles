@@ -1,0 +1,6 @@
+#!/bin/sh
+
+export AWS_PROFILE=orther-monitor
+export AWS_REGION=us-east-2
+
+awslogs "$@"
