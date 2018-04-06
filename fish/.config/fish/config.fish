@@ -20,6 +20,9 @@ set PATH $HOME/.bin $PATH
 # # nvm set node version
 # nvm use default
 
+# direnv hook into fish shell
+eval (direnv hook fish)
+
 # homebrew
 if test -e /usr/local/bin/brew
   set HOMEBREW_NO_ANALYTICS 1

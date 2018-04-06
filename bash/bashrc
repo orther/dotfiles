@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Don't check mail when opening terminal.
+unset MAILCHECK
+
+# Path to the bash it configuration
+export BASH_IT="$HOME/.bash_it"
+
+# Lock and Load a custom theme file
+export THEME_SHOW_CLOCK=true
+export BASH_IT_THEME='powerline'
+
+# Path to the bash it custom configuration symbolic linked to dotfiles
+export BASH_IT_CUSTOM="$HOME/.config/bash-it"
+
+# Load Bash It
+source $BASH_IT/bash_it.sh

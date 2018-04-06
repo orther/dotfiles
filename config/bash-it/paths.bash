@@ -1,21 +1,13 @@
-#!/usr/bin/env bash
+# if [[ ! ":$PATH:" == *":$HOME/bin:"* ]]; then
+#     export PATH="$HOME/bin:$PATH"
+# fi
 
-# Path to the bash it configuration
-export BASH_IT="$HOME/.bash_it"
+# if [[ ! ":$PATH:" == *":/usr/local/sbin:"* ]]; then
+#     export PATH="$PATH:/usr/local/sbin"
+# fi
 
-# Lock and Load a custom theme file
-export THEME_SHOW_CLOCK=true
-export BASH_IT_THEME='powerline'
-
-# Your place for hosting Git repos. I use this for private repos.
-# export GIT_HOSTING='git@git.domain.com'
-export GIT_HOSTING='git@github.com'
-
-# Don't check mail when opening terminal.
-unset MAILCHECK
-
-# TODO: move this into it's own plugin?
-export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin"
+# # TODO: move this into it's own plugin?
+# export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin"
 
 # # setup vim to be default editor
 # export VISUAL=vim
@@ -23,13 +15,7 @@ export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin"
 
 # brew
 # export PATH="/usr/local/sbin:$PATH"
-export HOMEBREW_GITHUB_API_TOKEN="$(pass api/orther@github.com/homebrew)" # orther GitHub OAuth HOMEBREW
-
-## yarn global bin
-#export PATH="$PATH:`yarn global bin`"
-
-# Load Bash It
-source $BASH_IT/bash_it.sh
+export HOMEBREW_GITHUB_API_TOKEN="$(gopass api/orther@github.com/homebrew)" # orther GitHub OAuth HOMEBREW
 
 # TODO: confirm we need these and if not remove, if we do then add them to fish?
 # GNU Command Line Tools on Mac OS X
@@ -42,12 +28,15 @@ export MANPATH="$(brew --prefix gnu-tar)/libexec/gnuman:$MANPATH"
 # # TODO: remove this and use docker instead?
 # export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 
+## yarn global bin
+#export PATH="$PATH:`yarn global bin`"
+
 # TODO: can we organize this better and use less paths?
 export PATH=$PATH:~/.bin
 export PATH=$PATH:/usr/local/bin
 
-# TODO: use some elixir version manager instead?
-export PATH=$PATH:~/elixir-v1.3.0-rc.1-Precompiled/bin
+# # TODO: use some elixir version manager instead?
+# export PATH=$PATH:~/elixir-v1.3.0-rc.1-Precompiled/bin
 
 # Evaluate system PATH
 if [ -x /usr/libexec/path_helper ]; then
