@@ -1,5 +1,6 @@
 fisherman/await
 oh-my-fish/plugin-bak
+edc/bass
 oh-my-fish/theme-bobthefish
 oh-my-fish/plugin-brew
 oh-my-fish/plugin-config
@@ -11,6 +12,8 @@ fisherman/getopts
 fisherman/last_job_id
 belltoy/plugin-mix
 0rax/narwhal
+fisherman/nvm
+simnalamburt/shellder
 tuvistavie/fish-ssh-agent
 oh-my-fish/plugin-ssh-config.d
 wk/plugin-ssh-term-helper

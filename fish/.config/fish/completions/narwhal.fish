@@ -1,0 +1,1 @@
+/Users/brandon/.config/fisherman/narwhal/completions/narwhal.fish
