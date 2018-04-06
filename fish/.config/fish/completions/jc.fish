@@ -1,0 +1,1 @@
+/Users/brandon/.config/fisherman/autojump/completions/jc.fish
