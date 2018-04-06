@@ -1,1 +1,1 @@
-/Users/brandon/.config/fisherman/bobthefish/fish_prompt.fish
+/Users/brandon/.config/fisherman/shellder/fish_prompt.fish
