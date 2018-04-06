@@ -17,8 +17,8 @@ each 'source $_1' (ls $fish/aliases/*)
 set PATH $HOME/.bin $PATH
 # set PATH $PATH /Applications/Emacs.app/Contents/MacOS/bin
 
-# nvm set node version
-nvm use default
+# # nvm set node version
+# nvm use default
 
 # homebrew
 if test -e /usr/local/bin/brew
@@ -38,3 +38,4 @@ end
 # tabtab source for yarn package
 # uninstall by removing these lines or running `tabtab uninstall yarn`
 [ -f /Users/brandon/.config/yarn/global/node_modules/tabtab/.completions/yarn.fish ]; and . /Users/brandon/.config/yarn/global/node_modules/tabtab/.completions/yarn.fish
+nvm use default

@@ -1,1 +1,0 @@
-/Users/brandon/.config/fisherman/nvm/completions/nvm.fish
