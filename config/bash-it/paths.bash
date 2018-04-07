@@ -32,7 +32,6 @@ export MANPATH="$(brew --prefix gnu-tar)/libexec/gnuman:$MANPATH"
 #export PATH="$PATH:`yarn global bin`"
 
 # TODO: can we organize this better and use less paths?
-export PATH=$PATH:~/.bin
 export PATH=$PATH:/usr/local/bin
 
 # # TODO: use some elixir version manager instead?
@@ -57,3 +56,5 @@ fi
 # tabtab source for yarn package
 # uninstall by removing these lines or running `tabtab uninstall yarn`
 [ -f /Users/brandon/.config/yarn/global/node_modules/tabtab/.completions/yarn.bash ] && . /Users/brandon/.config/yarn/global/node_modules/tabtab/.completions/yarn.bash
+
+export PATH=~/.bin:$PATH:
