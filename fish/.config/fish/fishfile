@@ -6,6 +6,8 @@ oh-my-fish/plugin-brew
 oh-my-fish/plugin-config
 fisherman/docker-completion
 brgmnn/fish-docker-compose
+oh-my-fish/plugin-emacs
+brigand/fast-nvm-fish
 fisherman/fzf
 fisherman/get
 fisherman/getopts
